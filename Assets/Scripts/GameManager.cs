@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static bool GameSession = false;
     bool GameHasEnded = false;
 
     public float RestartDelay = 1.0f;

@@ -53,7 +53,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Canvas.cs" />
+     <Compile Include="Assets\credits.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/hp/Desktop/Workbench/Games/Unity/Two Big Balls/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
