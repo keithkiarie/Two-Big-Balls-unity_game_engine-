@@ -39,19 +39,21 @@ public class Player : MonoBehaviour
         string Player = gameObject.name;
 
         //Check game status
-        if (gameObject.transform.position.y < Platform.transform.position.y)
+        if (gameObject.transform.position.y - 2.0 < Platform.transform.position.y)
         {
             FindObjectOfType<GameManager>().EndGame();
         }
-
-
-        //Player movement
-        HoriMovement = Input.GetAxis((Player == "Player_1") ? "Horizontal_Player1" : "Horizontal_Player2");
-        rigidBody.velocity = new Vector2(HoriMovement * Speed, rigidBody.velocity.y);
-
-        if (CanJump && ((Player == "Player_1" && Input.GetKeyDown("w")) || (Player == "Player_2" && Input.GetKeyDown("up"))))
+        else
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpSpeed);
+            //Player movement
+            HoriMovement = Input.GetAxis((Player == "Player_1") ? "Horizontal_Player1" : "Horizontal_Player2");
+            rigidBody.velocity = new Vector2(HoriMovement * Speed, rigidBody.velocity.y);
+
+            if (CanJump && ((Player == "Player_1" && Input.GetKeyDown("w")) || (Player == "Player_2" && Input.GetKeyDown("up"))))
+            {
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, JumpSpeed);
+            }
         }
+        
     }
 }
