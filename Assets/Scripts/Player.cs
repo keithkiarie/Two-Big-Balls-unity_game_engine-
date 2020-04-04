@@ -16,11 +16,14 @@ public class Player : MonoBehaviour
     private GameObject Platform;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         Platform = GameObject.Find("Platform");
+
     }
 
     void OnCollisionEnter(Collision TheObject)
@@ -38,10 +41,14 @@ public class Player : MonoBehaviour
     {
         string Player = gameObject.name;
 
+        //Update the score display
+        var Score = GameManager.Score;
+        FindObjectOfType<GameManager>().ScoreText.text = $"{Score[0]} : {Score[1]}";
+
         //Check game status
         if (gameObject.transform.position.y - 2.0 < Platform.transform.position.y)
         {
-            FindObjectOfType<GameManager>().EndGame();
+            FindObjectOfType<GameManager>().EndGame((Player == "Player_1") ? "Player_2" : "Player_1");
         }
         else
         {
