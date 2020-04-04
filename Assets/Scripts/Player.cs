@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private GameObject Platform;
-
     private Rigidbody rigidBody;
 
     private float Speed = 10.0f;
@@ -20,17 +18,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        Platform = GameObject.Find("Platform");
     }
 
-    void OnCollisionEnter(Collision Platform)
+    void OnCollisionEnter(Collision TheObject)
     {
-        CanJump = true;
+        if (TheObject.collider.name == "Platform") CanJump = true;
     }
 
-    void OnCollisionExit(Collision Platform)
+    void OnCollisionExit(Collision TheObject)
     {
-        CanJump = false;
+        if (TheObject.collider.name == "Platform") CanJump = false;
     }
 
     // Update is called once per frame
