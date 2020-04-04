@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
 
     private bool CanJump = false;
 
+    private GameObject Platform;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        Platform = GameObject.Find("Platform");
     }
 
     void OnCollisionEnter(Collision TheObject)
@@ -35,6 +38,14 @@ public class Player : MonoBehaviour
     {
         string Player = gameObject.name;
 
+        //Check game status
+        if (gameObject.transform.position.y < Platform.transform.position.y)
+        {
+            FindObjectOfType<GameManager>().EndGame();
+        }
+
+
+        //Player movement
         HoriMovement = Input.GetAxis((Player == "Player_1") ? "Horizontal_Player1" : "Horizontal_Player2");
         rigidBody.velocity = new Vector2(HoriMovement * Speed, rigidBody.velocity.y);
 
